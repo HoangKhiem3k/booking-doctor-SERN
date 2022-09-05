@@ -1,7 +1,7 @@
 .home-header-container {
     height : 60px;
     width  : 100%;
-    padding: 0 30px;
+    padding: 0 100px;
 
     .home-header-content {
         width  : 100%;
@@ -9,15 +9,16 @@
         display: flex;
 
         .left-content {
-            width      : 25%;
+            width      : 20%;
             display    : flex;
             align-items: center;
 
             .header-logo {
-                background: url('../../assets/images/bookingcare-2020.svg') center no-repeat;
-                height    : 100%;
-                width     : 100%;
-                cursor    : pointer;
+                height     : 100%;
+                width      : 100%;
+                cursor     : pointer;
+                transform  : scale(0.5, 0.5);
+                margin-left: -45px;
             }
 
             i {
@@ -28,7 +29,7 @@
         }
 
         .center-content {
-            width          : 50%;
+            width          : 55%;
             display        : flex;
             justify-content: space-between;
             align-items    : center;
@@ -44,22 +45,55 @@
         .right-content {
             width          : 25%;
             display        : flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items    : center;
+        }
+
+        .support {
+            padding-right: 50px;
+            display      : flex;
+            align-items  : center;
+            cursor       : pointer;
+
+            i {
+                font-size   : 15px;
+                margin-right: 5px;
+                color       : #49bce2;
+            }
+        }
+
+        .language-vi {
+            cursor: pointer;
+
+            &.active {
+                color: red;
+            }
+        }
+
+        .language-en {
+            margin: 0 10px;
+            cursor: pointer;
+
+            &.active {
+                color: royalblue;
+            }
         }
     }
 }
 
 .home-header-banner {
-    background     : url('../../assets/images/bookingcare-cover-4.jpg') center no-repeat;
-    background-size: cover;
-    height         : 485px;
-    display        : flex;
-    flex-direction : column;
+    background      : center no-repeat;
+    background-size : cover;
+    background-image: url('../../assets/images/bookingcare-cover-4.jpg');
+    height          : 485px;
+    display         : flex;
+    flex-direction  : column;
+
 
     .content-up {
-        height     : 50%;
-        padding-top: 15px;
+        height          : 65%;
+        padding-top     : 15px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25) 0%, rgba(255, 255, 255, 0.1));
 
         .title1 {
             text-align   : center;
@@ -104,7 +138,11 @@
     }
 
     .content-down {
-        height: 50%;
+        height          : 35%;
+        display         : flex;
+        align-items     : flex-end;
+        justify-content : center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
 
         .options {
             text-align     : center;
@@ -135,7 +173,8 @@
                     font-weight: 600;
 
                     &:hover {
-                        color: #49bce2;
+                        color : #49bce2;
+                        cursor: pointer;
                     }
                 }
             }

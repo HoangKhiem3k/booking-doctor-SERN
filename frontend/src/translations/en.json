@@ -1,4 +1,25 @@
 {
+    "home-header":{
+        "speciality": "Medical speciality",
+        "search-doctor": "Find a doctor by speciality",
+        "health-facility": "Health facilities",
+        "select-room":"Choose hospital clinic",
+        "doctor":"Doctor",
+        "choose-doctor":"Choose your doctor",
+        "fee": "Fee",
+        "health-check": "General health check",
+        "support": "Support"
+    },
+    "banner": {
+        "title1": "MEDICAL BACKGROUND",
+        "title2": "COMPREHENSIVE HEALTH CARE",
+        "child1": "Specialist examination",
+        "child2": "Remote examination",
+        "child3": "General examination",
+        "child4": "Medical test",
+        "child5": "Mental Health",
+        "child6": "Dental examination"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
