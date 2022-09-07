@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./route/web";
 import connectDB from "./config/connectDB";
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 // import cors from "cors";
 require("dotenv").config();
 
@@ -31,6 +33,27 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+
+// swagger
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Library API",
+      version: "1.0.0",
+      description: "API documentation",
+    },
+    servers: [
+      {
+        url: "http://localhost:8080",
+      },
+    ],
+  },
+  apis: ["./route/*.js"],
+};
+
+const specs = swaggerJsDoc(options);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 // config app
 app.use(bodyParser.json());
