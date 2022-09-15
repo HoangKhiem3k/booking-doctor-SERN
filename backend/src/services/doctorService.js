@@ -1,9 +1,9 @@
 import db from "../models/index";
-let getTopDoctorHome = (limit) => {
-  return new Promise((resolve, reject) => {
+let getTopDoctorHome = (limitInput) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      let users = db.User.findAll({
-        limit,
+      let users = await db.User.findAll({
+        limit: limitInput,
         where: {
           roleId: "R2",
         },
@@ -35,6 +35,27 @@ let getTopDoctorHome = (limit) => {
     }
   });
 };
+let getAllDoctors = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let doctors = await db.User.findAll({
+        where: {
+          roleId: "R2",
+        },
+        attributes: {
+          exclude: ["password", "image"],
+        },
+      });
+      resolve({
+        errCode: 0,
+        data: doctors,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   getTopDoctorHome,
+  getAllDoctors,
 };
