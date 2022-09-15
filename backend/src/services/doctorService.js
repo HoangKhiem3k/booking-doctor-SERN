@@ -51,6 +51,7 @@ let getAllDoctors = () => {
         data: doctors,
       });
     } catch (e) {
+      console.error(e);
       reject(e);
     }
   });
