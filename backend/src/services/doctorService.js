@@ -56,7 +56,33 @@ let getAllDoctors = () => {
     }
   });
 };
+let saveDetailInforDoctor = (data) => {
+  return new Promise(async (resolve, reject) => 
+  {
+      try {
+        if(!data.doctorId  || !data.contentHTML || !data.contentMarkdown){
+          resolve({
+            errCode: 1,
+            errMessage: "Missing parameters"
+          })
+        }else{
+          await db.Markdown.create({
+            contentHTML: data.contentHTML,
+            contentMarkdown: data.contentMarkdown,
+            description: data.description,
+            doctorId: data.doctorId,
+          })
+          resolve({
+            errCode: 0,
+            errMessage: "Save successfully"
+          })
+        }
+      }catch (e) {
+        reject(e);
+      }})
+}
 module.exports = {
   getTopDoctorHome,
   getAllDoctors,
+  saveDetailInforDoctor
 };

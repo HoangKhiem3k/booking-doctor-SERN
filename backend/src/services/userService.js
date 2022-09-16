@@ -149,10 +149,11 @@ let deleteUser = (id) => {
 let updateUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!data.id || !data.roleId || !data.positionId || !data.gender) {
+      console.log("data updateId: ",data.positionId)
+      if (!data.id || !data.roleId  || !data.gender) {
         resolve({
           errCode: 2,
-          errMessage: "Missing id",
+          errMessage: "Missing input",
         });
       }
       let user = await db.User.findOne({
@@ -183,6 +184,7 @@ let updateUser = (data) => {
       }
     } catch (e) {
       reject(e);
+      console.log("err update: ", e)
     }
   });
 };

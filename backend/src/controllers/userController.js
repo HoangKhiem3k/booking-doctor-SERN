@@ -40,6 +40,7 @@ let handleCreateNewUser = async (req, res) => {
 let handleUpdateUser = async (req, res) => {
   let data = req.body;
   let message = await userService.updateUser(data);
+  console.log("mess update", message)
   return res.status(200).json(message);
 };
 let handleDeteleUser = async (req, res) => {
