@@ -13,7 +13,7 @@ module.exports = {
         lastName: "Le",
         address: "Da Nang",
         gender: 1,
-        roleId: "r1",
+        roleId: "R1",
         phoneNumber: "0348597672",
         image: "",
         positionId: "",

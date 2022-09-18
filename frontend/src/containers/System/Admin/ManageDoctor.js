@@ -44,7 +44,6 @@ class ManageDoctor extends Component {
         listDoctors: dataSelect,
       });
     }
-    console.log("listDoctors: ", this.state.listDoctors);
   }
   handleEditorChange = ({ html, text }) => {
     this.setState({

@@ -244,24 +244,47 @@ export const fetchAllDoctors = () => {
 export const saveDetailDoctor = (data) => {
   return async (dispatch, getState) => {
     try {
-      let res = await saveDetailDoctorService(data); 
+      let res = await saveDetailDoctorService(data);
       if (res && res.errCode === 0) {
-        toast.success("Save doctor details successfully!")
+        toast.success("Save doctor details successfully!");
         dispatch({
           type: actionTypes.SAVE_DOCTOR_DETAILS_SUCCESS,
         });
       } else {
-        toast.error("Save doctor details error!")
+        toast.error("Save doctor details error!");
 
         dispatch({
           type: actionTypes.SAVE_DOCTOR_DETAILS_FAILED,
         });
       }
     } catch (e) {
-      toast.error("Save doctor details error!")
+      toast.error("Save doctor details error!");
 
       dispatch({
         type: actionTypes.SAVE_DOCTOR_DETAILS_FAILED,
+      });
+      console.log(e);
+    }
+  };
+};
+
+export const fetchAllScheduleTime = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllcodeService("TIME");
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_SCHEDULE_TIME_SUCCESS,
+          dataTime: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_ALL_SCHEDULE_TIME_FAILED,
+        });
+      }
+    } catch (e) {
+      dispatch({
+        type: actionTypes.FETCH_ALL_SCHEDULE_TIME_FAILED,
       });
       console.log(e);
     }

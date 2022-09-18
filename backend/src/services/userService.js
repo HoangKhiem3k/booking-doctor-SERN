@@ -149,8 +149,8 @@ let deleteUser = (id) => {
 let updateUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("data updateId: ",data.positionId)
-      if (!data.id || !data.roleId  || !data.gender) {
+      console.log("data updateId: ", data.positionId);
+      if (!data.id || !data.roleId || !data.gender) {
         resolve({
           errCode: 2,
           errMessage: "Missing input",
@@ -184,7 +184,7 @@ let updateUser = (data) => {
       }
     } catch (e) {
       reject(e);
-      console.log("err update: ", e)
+      console.log("err update: ", e);
     }
   });
 };
