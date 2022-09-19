@@ -84,12 +84,12 @@ class ManageSchedule extends Component {
   handleSaveSchedule = () => {
     let { currentDate, selectedDoctor, rangeTime } = this.state;
     let result = [];
-    if (!currentDate) {
-      toast.error("Invalid Date");
+    if (_.isEmpty(selectedDoctor)) {
+      toast.error("Invalid selected doctor");
       return;
     }
-    if (!selectedDoctor && !_.isEmpty(selectedDoctor)) {
-      toast.error("Invalid selected doctor");
+    if (!currentDate) {
+      toast.error("Invalid Date");
       return;
     }
     let formattedDate = moment(currentDate).format(dateFormat.SEND_TO_SERVER);
