@@ -22,7 +22,6 @@ class DetailDoctor extends Component {
       if (res && res.errCode === 0) {
         this.setState({ detailDoctor: res.data });
       }
-      console.log("res: ", res);
     }
   }
   componentDidUpdate() {}
@@ -36,7 +35,6 @@ class DetailDoctor extends Component {
       nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`;
       nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
     }
-    console.log("nameVi :", nameVi);
     return (
       <Fragment>
         <HomeHeader isShowBanner={false} />

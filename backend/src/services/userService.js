@@ -149,7 +149,6 @@ let deleteUser = (id) => {
 let updateUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("data updateId: ", data.positionId);
       if (!data.id || !data.roleId || !data.gender) {
         resolve({
           errCode: 2,

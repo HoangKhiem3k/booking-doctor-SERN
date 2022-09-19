@@ -23,7 +23,7 @@ class Header extends Component {
     let { userInfo } = this.props;
     let menu = [];
     if (userInfo && !_.isEmpty(userInfo)) {
-      let role = userInfo.roleId.toUpperCase();
+      let role = userInfo.roleId;
       if (role === USER_ROLE.ADMIN) {
         menu = adminMenu;
       }
@@ -31,7 +31,6 @@ class Header extends Component {
         menu = doctorMenu;
       }
     }
-    console.log("Role : ", userInfo.roleId);
     this.setState({ menuApp: menu });
   }
   render() {

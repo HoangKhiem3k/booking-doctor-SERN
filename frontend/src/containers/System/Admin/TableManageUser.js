@@ -29,7 +29,6 @@ class TableManageUser extends Component {
   }
   componentDidMount() {
     this.props.fetchUserRedux();
-    console.log("User Redux loadedData: ", this.props.fetchUserRedux());
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.listUsers !== this.props.listUsers) {

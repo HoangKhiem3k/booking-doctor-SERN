@@ -203,7 +203,6 @@ class UserRedux extends Component {
       avatar,
     } = this.state;
     // let genderRedux = this.props.genderRedux;
-    console.log("gender redux: ", this.props.genderRedux);
     return (
       <div className="user-redux-container">
         <div className="title">User redux</div>
