@@ -4,6 +4,8 @@ import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../../../utils/constant";
 import "./BookingModal.scss";
 import { Modal } from "reactstrap";
+import ProfileDoctor from "../ProfileDoctor";
+import _ from "lodash";
 class BookingModal extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,10 @@ class BookingModal extends Component {
 
   render() {
     let { isOpenModal, closeBookingClose, dataTime } = this.props;
-    console.log("isOpenModal", isOpenModal);
+    let doctorId = "";
+    if (dataTime && !_.isEmpty(dataTime)) {
+      doctorId = dataTime.doctorId;
+    }
     return (
       <Modal
         isOpen={isOpenModal}
@@ -33,8 +38,9 @@ class BookingModal extends Component {
             </span>
           </div>
           <div className="booking-modal-body">
-            <div className="doctor-infor"></div>
-            <div className="price">500.000</div>
+            <div className="doctor-infor">
+              <ProfileDoctor doctorId={doctorId} />
+            </div>
             <div className="row">
               <div className="col-6 form-group">
                 <label>Ho ten</label>
