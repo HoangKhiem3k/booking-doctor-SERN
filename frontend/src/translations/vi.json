@@ -71,6 +71,13 @@
             "no-schedule":"Bác sĩ không có lịch",
             "choose": "Chọn",
             "book-free":" và đặt (miễn phí)"
+        },
+        "extra-infor-doctor":{
+            "text-address":"Địa chỉ khám",
+            "price":"Giá khám: ",
+            "detail":"Xem chi tiết",
+            "payment":"Thanh toán chi phí bằng hình thức: ",
+            "hide-price":"Ẩn bảng giá"
         }
     },
     "admin":{
