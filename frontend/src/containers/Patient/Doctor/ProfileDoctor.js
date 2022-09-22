@@ -5,6 +5,8 @@ import { LANGUAGES } from "../../../utils/constant";
 import "./ProfileDoctor.scss";
 import NumberFormat from "react-number-format";
 import { getProfileDoctorById } from "../../../services/userService";
+import _ from "lodash";
+import moment from "moment";
 class ProfileDoctor extends Component {
   constructor(props) {
     super(props);
@@ -32,10 +34,34 @@ class ProfileDoctor extends Component {
     if (this.props.language !== prevProps.language) {
     }
   }
-
+  renderTimeBooking = (dataTime) => {
+    let { language } = this.props;
+    if (dataTime && !_.isEmpty(dataTime)) {
+      let time =
+        language === LANGUAGES.VI
+          ? dataTime.timeTypeData.valueVi
+          : dataTime.timeTypeData.valueEn;
+      let date =
+        language === LANGUAGES.VI
+          ? moment.unix(+dataTime.date / 1000).format("dddd - DD/MM/YYYY")
+          : moment
+              .unix(+dataTime.date / 1000)
+              .locale("en")
+              .format("ddd - MM/DD/YYYY");
+      return (
+        <>
+          <div>
+            {time} - {date}
+          </div>
+          <div>Mien phi dat lich</div>
+        </>
+      );
+    }
+    return <></>;
+  };
   render() {
     let { dataProfile } = this.state;
-    let { language } = this.props;
+    let { language, isShowDescriptionDoctor, dataTime } = this.props;
     let nameVi = "",
       nameEn = "";
     if (dataProfile && dataProfile.positionData) {
@@ -58,11 +84,17 @@ class ProfileDoctor extends Component {
               {language === LANGUAGES.VI ? nameVi : nameEn}
             </div>
             <div className="down">
-              {dataProfile &&
-                dataProfile.Markdown &&
-                dataProfile.Markdown.description && (
-                  <span>{dataProfile.Markdown.description}</span>
-                )}
+              {isShowDescriptionDoctor === true ? (
+                <>
+                  {dataProfile &&
+                    dataProfile.Markdown &&
+                    dataProfile.Markdown.description && (
+                      <span>{dataProfile.Markdown.description}</span>
+                    )}
+                </>
+              ) : (
+                <>{this.renderTimeBooking(dataTime)}</>
+              )}
             </div>
           </div>
         </div>
