@@ -17,7 +17,6 @@ let postBookAppointment = (data) => {
           errMessage: "Missing required information",
         });
       } else {
-        console.log("fullname2 + language: ", data.fullName, data.language);
         await emailService.sendSimpleEmail({
           receiverEmail: data.email,
           patientName: data.fullName,

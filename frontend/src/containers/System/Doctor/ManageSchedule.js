@@ -122,7 +122,6 @@ class ManageSchedule extends Component {
       toast.error("Save infor error!");
       console.log(res);
     }
-    console.log("check res save", res);
   };
   render() {
     let rangeTime = this.state.rangeTime;

@@ -99,7 +99,6 @@ class BookingModal extends Component {
       timeString: timeString,
       doctorName: doctorName,
     });
-    console.log("check fullname :", this.state.fullName);
     if (res && res.errCode === 0) {
       toast.success("Booking appointment successfully!");
 
