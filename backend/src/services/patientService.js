@@ -5,18 +5,26 @@ import emailService from "./emailService";
 let postBookAppointment = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!data.email || !data.doctorId || !data.timeType || !data.date) {
+      if (
+        !data.email ||
+        !data.doctorId ||
+        !data.timeType ||
+        !data.date ||
+        !data.fullName
+      ) {
         resolve({
           errCode: 1,
           errMessage: "Missing required information",
         });
       } else {
+        console.log("fullname2 + language: ", data.fullName, data.language);
         await emailService.sendSimpleEmail({
           receiverEmail: data.email,
-          patientname: "Khiem1",
-          time: "Chu nhat",
-          doctorName: "Khiem0",
-          redirectLink: "https://nodemailer.com/about/",
+          patientName: data.fullName,
+          time: data.timeString,
+          doctorName: data.doctorName,
+          language: data.language,
+          redirectLink: data.email,
         });
 
         let user = await db.User.findOrCreate({
