@@ -59,24 +59,42 @@ let getAllDoctors = () => {
     }
   });
 };
+let checkRequiredFields = (inputData) => {
+  let arrFields = [
+    "doctorId",
+    "contentHTML",
+    "contentMarkdown",
+    "action",
+    "selectedPrice",
+    "selectedPayment",
+    "selectedProvince",
+    "nameClinic",
+    "addressClinic",
+    "note",
+    "specialtyId",
+  ];
+  let isValid = true;
+  let element = "";
+  for (let i = 0; i < arrFields.length; i++) {
+    if (!inputData[arrFields[i]]) {
+      isValid = false;
+      element = arrFields[i];
+      break;
+    }
+  }
+  return {
+    isValid,
+    element,
+  };
+};
 let saveDetailInforDoctor = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (
-        !data.doctorId ||
-        !data.contentHTML ||
-        !data.contentMarkdown ||
-        !data.action ||
-        !data.selectedPrice ||
-        !data.selectedPayment ||
-        !data.selectProvince ||
-        !data.nameClinic ||
-        !data.addressClinic ||
-        !data.note
-      ) {
+      let checkOnject = checkRequiredFields(data);
+      if (checkOnject.isValid === false) {
         resolve({
           errCode: 1,
-          errMessage: "Missing parameters",
+          errMessage: `Missing parameters: ${checkOnject.element}`,
         });
       } else {
         if (data.action === "CREATE") {
@@ -113,22 +131,26 @@ let saveDetailInforDoctor = (data) => {
           //update
           doctorInfor.doctorId = data.doctorId;
           doctorInfor.priceId = data.selectedPrice;
-          doctorInfor.provinceId = data.selectProvince;
+          doctorInfor.provinceId = data.selectedProvince;
           doctorInfor.paymentId = data.selectedPayment;
           doctorInfor.nameClinic = data.nameClinic;
           doctorInfor.addressClinic = data.addressClinic;
           doctorInfor.note = data.note;
+          doctorInfor.specialtyId = data.specialtyId;
+          doctorInfor.clinicId = data.clinicId;
           await doctorInfor.save();
         } else {
           //create
           await db.Doctor_Infor.create({
             doctorId: data.doctorId,
             priceId: data.selectedPrice,
-            provinceId: data.selectProvince,
+            provinceId: data.selectedProvince,
             paymentId: data.selectedPayment,
             nameClinic: data.nameClinic,
             addressClinic: data.addressClinic,
             note: data.note,
+            specialtyId: data.specialtyId,
+            clinicId: data.clinicId,
           });
         }
         resolve({
