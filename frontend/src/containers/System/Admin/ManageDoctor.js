@@ -136,7 +136,7 @@ class ManageDoctor extends Component {
   };
   handleChangeSelect = async (selectedDoctor) => {
     this.setState({ selectedDoctor });
-    let { listPayment, listPrice, listProvince } = this.state;
+    let { listPayment, listPrice, listProvince, listSpecialty } = this.state;
     let res = await getDetailInforDoctor(selectedDoctor.value);
     if (res && res.errCode === 0 && res.data && res.data.Markdown) {
       let markdown = res.data.Markdown;
@@ -145,10 +145,12 @@ class ManageDoctor extends Component {
         note = "",
         paymentId = "",
         provinceId = "",
+        specialtyId = "",
         priceId = "",
         selectedPayment = "",
         selectedPrice = "",
-        selectedProvince = "";
+        selectedProvince = "",
+        selectedSpecialty = "";
       if (res.data.Doctor_Infor) {
         addressClinic = res.data.Doctor_Infor.addressClinic;
         nameClinic = res.data.Doctor_Infor.nameClinic;
@@ -156,6 +158,7 @@ class ManageDoctor extends Component {
         paymentId = res.data.Doctor_Infor.paymentId;
         priceId = res.data.Doctor_Infor.priceId;
         provinceId = res.data.Doctor_Infor.provinceId;
+        specialtyId = res.data.Doctor_Infor.specialtyId;
         selectedPayment = listPayment.find((item) => {
           return item && item.value === paymentId;
         });
@@ -164,6 +167,9 @@ class ManageDoctor extends Component {
         });
         selectedProvince = listProvince.find((item) => {
           return item && item.value === provinceId;
+        });
+        selectedSpecialty = listSpecialty.find((item) => {
+          return item && item.value === specialtyId;
         });
       }
       this.setState({
@@ -177,6 +183,7 @@ class ManageDoctor extends Component {
         selectedPayment: selectedPayment,
         selectedPrice: selectedPrice,
         selectedProvince: selectedProvince,
+        selectedSpecialty: selectedSpecialty,
       });
     } else {
       this.setState({
@@ -187,6 +194,10 @@ class ManageDoctor extends Component {
         addressClinic: "",
         nameClinic: "",
         note: "",
+        selectedPayment: "",
+        selectedPrice: "",
+        selectedProvince: "",
+        selectedSpecialty: "",
       });
     }
   };

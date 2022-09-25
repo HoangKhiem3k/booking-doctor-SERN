@@ -125,7 +125,7 @@ let saveDetailInforDoctor = (data) => {
           where: {
             doctorId: data.doctorId,
           },
-          raw: true,
+          raw: false,
         });
         if (doctorInfor) {
           //update
