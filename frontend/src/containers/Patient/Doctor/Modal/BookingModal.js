@@ -58,11 +58,11 @@ class BookingModal extends Component {
     }
     if (this.props.dataTime !== prevProps.dataTime) {
       if (this.props.dataTime && !_.isEmpty(this.props.dataTime)) {
-        let doctorId = this.props.dataTime.doctorId;
-        let timeType = this.props.dataTime.timeType;
+        let doctorIdProps = this.props.dataTime.doctorId;
+        let timeTypeProps = this.props.dataTime.timeType;
         this.setState({
-          doctorId: doctorId,
-          timeType: timeType,
+          doctorId: doctorIdProps,
+          timeType: timeTypeProps,
         });
       }
     }
@@ -93,12 +93,38 @@ class BookingModal extends Component {
       reason: this.state.reason,
       date: date,
       selectedGender: this.state.selectedGender.value,
-      doctorId: this.state.doctorId,
-      timeType: this.state.timeType,
+      doctorId: this.props.dataTime.doctorId,
+      timeType: this.props.dataTime.timeType,
       language: this.props.language,
       timeString: timeString,
       doctorName: doctorName,
     });
+    console.log(
+      "fullName:",
+      this.state.fullName,
+      "phoneNumber:",
+      this.state.phoneNumber,
+      "email:",
+      this.state.email,
+      "address:",
+      this.state.address,
+      "reason:",
+      this.state.reason,
+      "date:",
+      date,
+      "selectedGender:",
+      this.state.selectedGender.value,
+      "doctorId:",
+      this.props.dataTime.doctorId,
+      "timeType:",
+      this.props.dataTime.timeType,
+      "language:",
+      this.props.language,
+      "timeString:",
+      timeString,
+      "doctorName:",
+      doctorName
+    );
     if (res && res.errCode === 0) {
       toast.success("Booking appointment successfully!");
 

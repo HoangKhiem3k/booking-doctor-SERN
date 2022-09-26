@@ -102,7 +102,6 @@ class DoctorSchedule extends Component {
       isOpenModalBooking: true,
       dataScheduleTimeModal: time,
     });
-    console.log("time", time);
   };
   closeBookingClose = () => {
     this.setState({
@@ -117,7 +116,6 @@ class DoctorSchedule extends Component {
       dataScheduleTimeModal,
     } = this.state;
     let { language } = this.props;
-
     return (
       <>
         <div className="doctor-schedule-container">
